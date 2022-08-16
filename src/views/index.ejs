@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Titulo</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% departamentos.forEach(element => { %>
+      <p><%= element.Nombre %> </p>
+      <% }) %>
+      <% especialidades.forEach(element => { %>
+        <p><%= element.Nombre %> </p>
+        <% }) %>
+        <% doctores.forEach(element => { %>
+          <p><%= element.Nombre %> </p>
+          <% }) %>
+          <% analisis.forEach(element => { %>
+            <p><%= element.Entregado %> </p>
+            <% }) %>
+            <% pacientes.forEach(element => { %>
+              <p><%= element.Nombre %> </p>
+              <% }) %>
+              <% obraSocial.forEach(element => { %>
+                <p><%= element.Nombre %> </p>
+                <% }) %>
+                <% habitaciones.forEach(element => { %>
+                  <p><%= element.id_habitacion %> </p>
+                  <% }) %>
+                  <br>
+                  <hr>
+                  
+                  <% camas.forEach(element => { %>
+                    <p><%= element.paciente %> </p>
+                    <% }) %>
+  </body>
+</html>
