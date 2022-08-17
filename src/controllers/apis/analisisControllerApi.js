@@ -1,4 +1,3 @@
-const db = require('../../database/models')
 const {createAnalisis,getAllAnalisiss,getAnalisisById, editAnalisis, analisisExists, destroyAnalisis}= require('../../services/analisisService')
 const {response200, response500, response404}=require('../../services/response') 
 module.exports= {
@@ -22,7 +21,7 @@ module.exports= {
     }, 
     
     update: async(req,res)=>{
-   
+
         try {
         const { id } = req.params;
         const analisis = await analisisExists({ id });
@@ -31,14 +30,15 @@ module.exports= {
         }
         let { entregado,id_departamento, id_paciente, id_doctor}= req.body; 
         
-        let analisisUpdate = await editAnalisis(id,  entregado,id_departamento, id_paciente, id_doctor) 
+     await editAnalisis(id, entregado,id_departamento, id_paciente, id_doctor) 
 
-        return res.status(200).json(response200(analisisUpdate))
+
+        return res.status(200).json(response200(await analisisExists({ id })))
        } catch (error) {
         
         return res.status(500).json(response500(error))
      
-    }
+       }
       
     },
     destroy: async(req,res)=>{

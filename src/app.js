@@ -7,7 +7,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var analisisRouter = require('./routes/apis/analisisRouter');
-var authRouter= require('./routes/apis/authRouter')
+var authRouter= require('./routes/apis/authRouter'); 
+var camaRouter= require('./routes/apis/camasRouter');
+var obraRouter= require('./routes/apis/obrasRouter'); 
+var departamentoRouter= require('./routes/apis/departamentosRouter'); 
+var especialidadRouter= require('./routes/apis/especialidadesRouter'); 
+var habitacionRouter= require('./routes/apis/habitacionesRouter'); 
+var pacientesRouter= require('./routes/apis/pacientesRouter'); 
+var turnosRouter= require('./routes/apis/turnosRouter'); 
+var doctorRouter= require('./routes/apis/doctoresRouter'); 
 
 
 var app = express();
@@ -25,6 +33,14 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/', indexRouter);
 app.use('/api/analisis', analisisRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/cama', camaRouter);
+app.use('/api/obra', obraRouter);
+app.use('/api/paciente', pacientesRouter);
+app.use('/api/departamento', departamentoRouter);
+app.use('/api/doctor', doctorRouter );
+app.use('/api/turno', turnosRouter );
+app.use('/api/especialidad', especialidadRouter );
+app.use('/api/habitacion', habitacionRouter );
 
 
 

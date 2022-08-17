@@ -7,7 +7,7 @@ const verificacion= require('../../middlewares/auth')
 router
     .get('/', list)
     .post('/create',verificacion, create)
-    .put('/update',verificacion, update )
+    .put('/update/:id', verificacion, update )
     .delete('/delete/:id',verificacion, destroy)
 
 module.exports = router;

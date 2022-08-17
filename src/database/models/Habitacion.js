@@ -1,13 +1,7 @@
 module.exports = (sequelize, dataTypes)=> {
   const alias = "Habitacion";
   const cols = {
-    id_habitacion: {
-      type: dataTypes.INTEGER,
-      primaryKey: true,
-      autoincrement: true,
-      unique: true,
-      allowNull: false,
-    },
+
     enfermero_mañana: {
       type: dataTypes.STRING(50),
       allowNull: false,

@@ -7,16 +7,16 @@ module.exports={
   ;
   },
  getAllAnalisiss : async () => {
-    return await db.Analisis.findAll();
+    return await db.Analisis.findAll({include:['departamentos', 'pacientes']});
   },
   
  getAnalisisById : async ({ id }) => {
     return await db.Analisis.findOne({ where: { id } });
   },
   
-editAnalisis : async ({ id, entregado,id_departamento, id_paciente, id_doctor}) => {
-  return analisis = await db.Analisis.update({ entregado,id_departamento, id_paciente, id_doctor}, { where: { id } });
-   
+editAnalisis : async (id, entregado,id_departamento, id_paciente, id_doctor) => {
+    return analisis = await db.Analisis.update({ entregado,id_departamento, id_paciente, id_doctor}, { where: { id } });
+ 
   },
  analisisExists :async ({ id }) => {
     const analisisExists = await db.Analisis.findByPk(id);

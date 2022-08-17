@@ -2,14 +2,8 @@
 module.exports= (sequelize, dataTypes)=>{
     const alias= "Paciente";
     const cols={
-        id_paciente: {
-            type: dataTypes.INTEGER,
-            allowNull: false, 
-            primaryKey: true, 
-            autoincrement: true
-
-        },
-        Nombre: {
+      
+        nombre: {
             type: dataTypes.STRING(50), 
             allowNull: false, 
         },
@@ -18,7 +12,7 @@ module.exports= (sequelize, dataTypes)=>{
             allowNull: false
 
         }, 
-        Telefono:{
+        telefono:{
             type: dataTypes.INTEGER,
             allowNull: false
 

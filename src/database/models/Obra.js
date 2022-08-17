@@ -2,12 +2,6 @@
 module.exports=(sequelize, dataTypes)=>{
 const alias = "Obra"; 
 const cols= {
-id_obra: {
-    type: dataTypes.INTEGER, 
-    primaryKey: true, 
-    allowNull: false, 
-    autoincrement: true
-}, 
 nombre: {
     type: dataTypes.STRING(20), 
     allowNull: false
@@ -24,7 +18,8 @@ direccion: {
 }; 
 const config={
     tableName: "obra_social",
-    timestamps: false
+    timestamps: false,
+    primaryKey: 'id_obra'
 }
 
 
@@ -34,8 +29,6 @@ Obra.associate = function(models){
         as: "pacientes", 
         foreignKey:"id_obra"
     })
-   
-
 }
 return Obra
 

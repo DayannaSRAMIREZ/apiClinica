@@ -1,31 +1,19 @@
 const db = require('../../database/models')
-const {createToken, comparePass, encryptPassword}= require('../../services/authServices')
+const {createToken, comparePass, encryptPassword}= require('../../services/authServices'); 
+const {response200, response500, response404}=require('../../services/response') 
 
 module.exports = {
     register: async (req, res) => {
 
         try {
-
             let password= encryptPassword(req.body.password)
-            let usuario=  await db.User.create({ name: req.body.name,email: req.body.email,password}); 
-            let response = {
-                ok: true,
-                meta: {
-                  status: 200,
-                },
-                data: usuario,
-              }
-              return res.status(200).json(response)
+            await db.User.create({ name: req.body.name,email: req.body.email,password}); 
+         
+             return res.status(200).json(response200('Usuario creado'))
 
         } catch (error) {
-            let response = {
-                ok: false,
-                meta: {
-                  status: 500
-                },
-                msg: error.message ? error.message : "comuniquese con el administrador del sitio"
-              }
-              return res.status(500).json(response)
+         
+              return res.status(500).json(response500(error))
             
         }
     },
@@ -48,16 +36,9 @@ module.exports = {
                   return res.status(404).json(response)
             }else{
               if(comparePass(password, usuario.password)){
-                    let token = createToken(usuario)
-                    let response = {
-                        ok: true,
-                        meta: {
-                          status: 200,
-                        },
-                        data: usuario.name,
-                        token
-                      }
-                      return res.status(200).json(response)
+                    let token = createToken(usuario.email)
+             
+                     return res.status(200).json(response200(token))
                
                 }else{
                     let response = {
@@ -69,20 +50,11 @@ module.exports = {
                       }
                       return res.status(401).json(response)
                 }
-
             }
         } catch (error) {
-            let response = {
-                ok: false,
-                meta: {
-                  status: 500
-                },
-                msg: error.message ? error.message : "comuniquese con el administrador del sitio"
-              }
-              return res.status(500).json(response)
+
+          return res.status(500).json(response500(error))
+
         }
-        
-
-
     }
 }

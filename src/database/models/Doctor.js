@@ -3,12 +3,7 @@ module.exports=(sequelize, dataTypes)=>{
 
     const alias = "Doctor"; 
     const cols= {
-        id_doctor: {
-            type: dataTypes.INTEGER, 
-            allowNull: false,
-            autoincrement: true,
-            primaryKey: true
-        },
+        
         nombre:{
             type: dataTypes.STRING(50),
             allowNull: false   

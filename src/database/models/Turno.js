@@ -1,23 +1,17 @@
 module.exports=(sequelize, dataTypes)=>{
     const alias= "Turno"; 
     const cols= {
-        id_turno:{
-            type: dataTypes.INTEGER, 
-            primaryKey : true, 
-            allowNull: false, 
-            autoincrement: true,
-            unique: true
-        }, 
+      
         id_paciente :{
-            type: dataTypes.DATEONLY,
+            type: dataTypes.INTEGER,
             allowNull: false
         },
         id_doctor: {
-            type: dataTypes.DATEONLY,
+            type: dataTypes.INTEGER,
             allowNull: false
         }, 
         fecha:{
-            type: dataTypes.INTEGER,
+            type: dataTypes.DATEONLY,
             allowNull: false
         }
        

@@ -1,12 +1,7 @@
 module.exports=(sequelize, dataTypes)=>{
     const alias= "Cama"; 
     const cols= {
-        id_cama:{
-            type: dataTypes.INTEGER, 
-            primaryKey : true, 
-            allowNull: false, 
-            autoincrement: true
-        }, 
+   
         fecha_ingreso: {
             type: dataTypes.DATEONLY,
             defaultValue: 0 
