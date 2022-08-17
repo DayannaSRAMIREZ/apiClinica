@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 module.exports={
     createToken:(info)=>{
+        
         let token = jwt.sign({info},secret, {
             expiresIn: expires
         }); 

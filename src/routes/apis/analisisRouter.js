@@ -3,7 +3,7 @@ var router = express.Router();
 const {list, create, update, destroy}= require('../../controllers/apis/analisisControllerApi');
 const verificacion= require('../../middlewares/auth')
 
-/* GET home page. */
+
 router
     .get('/', list)
     .post('/create',verificacion, create)

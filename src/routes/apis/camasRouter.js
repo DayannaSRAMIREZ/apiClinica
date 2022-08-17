@@ -3,7 +3,7 @@ var router = express.Router();
 const {list, create, update, destroy}= require('../../controllers/apis/camasControllerApi');
 const verificacion= require('../../middlewares/auth')
 
-/* GET home page. */
+
 router
     .get('/', list)
     .post('/',verificacion, create)

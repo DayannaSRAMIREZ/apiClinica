@@ -17,7 +17,7 @@ module.exports={
   },
   
 editPaciente : async (id, nombre,nacimiento,telefono,direccion, id_obra,id_cama) => {
-    return  await db.Paciente.update({ nombre,nacimiento,telefono,didireccion, id_obra,id_cama}, { where: { id } });
+    return  await db.Paciente.update({ nombre,nacimiento,telefono,direccion, id_obra,id_cama}, { where: { id } });
  
   },
  pacienteExists :async ({ id }) => {
