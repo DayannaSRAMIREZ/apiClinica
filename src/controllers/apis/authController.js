@@ -1,28 +1,21 @@
 const db = require('../../database/models')
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { expires,secret,rounds } = require('../../database/config/auth');
+const {createToken, comparePass, encryptPassword}= require('../../services/authServices')
 
 module.exports = {
     register: async (req, res) => {
 
         try {
-            let password = bcrypt.hashSync(req.body.password, +rounds)
-            let usuario=  await db.User.create({ name: req.body.name,email: req.body.email,password}); 
-            let token = jwt.sign({user:usuario},secret, {
-                expiresIn: expires
-            })
 
+            let password= encryptPassword(req.body.password)
+            let usuario=  await db.User.create({ name: req.body.name,email: req.body.email,password}); 
             let response = {
                 ok: true,
                 meta: {
                   status: 200,
                 },
                 data: usuario,
-                token
               }
               return res.status(200).json(response)
-       
 
         } catch (error) {
             let response = {
@@ -35,8 +28,6 @@ module.exports = {
               return res.status(500).json(response)
             
         }
-
-
     },
     login: async(req, res) => {
         try {
@@ -56,10 +47,8 @@ module.exports = {
                   }
                   return res.status(404).json(response)
             }else{
-                if(bcrypt.compareSync(password,usuario.password)){
-                    let token = jwt.sign({user:usuario},secret, {
-                        expiresIn: expires
-                    })
+              if(comparePass(password, usuario.password)){
+                    let token = createToken(usuario)
                     let response = {
                         ok: true,
                         meta: {

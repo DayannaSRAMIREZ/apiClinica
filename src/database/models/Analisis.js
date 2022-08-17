@@ -4,12 +4,7 @@ module.exports=(sequelize, dataTypes)=>{
 
     const alias = "Analisis"; 
     const cols= {
-        nro_analisis: {
-            type: dataTypes.INTEGER, 
-            allowNull: false,
-            autoincrement: true,
-            primaryKey: true
-        },
+
         entregado:{
             type: dataTypes.BOOLEAN,
             allowNull: false,
